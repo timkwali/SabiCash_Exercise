@@ -35,7 +35,7 @@ fun NewsListItem(
         ) {
             Box(
                 modifier = Modifier
-                    .height(170.dp)
+                    .height(150.dp)
             ) {
                 Image(
                     painter = painter,

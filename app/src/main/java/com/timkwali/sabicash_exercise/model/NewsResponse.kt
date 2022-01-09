@@ -1,3 +1,5 @@
 package com.timkwali.sabicash_exercise.model
 
-data class NewsResponse()
+data class NewsResponse(
+    val articles: List<NewsArticle>
+)
