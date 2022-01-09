@@ -1,6 +1,7 @@
 package com.timkwali.sabicash_exercise.data.api
 
 import com.timkwali.sabicash_exercise.common.Constants
+import com.timkwali.sabicash_exercise.model.NewsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,7 +12,5 @@ interface NewsArticleApi {
         @Query("country") Country: String = "us",
         @Query("page") pageNumber: Int = 1,
         apiKey: String = Constants.API_KEY
-    ) {
-
-    }
+    ): NewsResponse
 }
