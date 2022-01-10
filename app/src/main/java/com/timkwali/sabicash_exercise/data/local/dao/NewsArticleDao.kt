@@ -14,8 +14,8 @@ interface NewsArticleDao {
     fun getAllNewsArticles(): PagingSource<Int, NewsArticle>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun saveNewsArticle(newsArticleList: List<NewsArticle>)
+    suspend fun saveAllNewsArticles(newsArticles: List<NewsArticle>)
 
     @Query("DELETE FROM news_articles_table")
-    suspend fun deleteAllNewsArticle()
+    suspend fun deleteAllNewsArticles()
 }

@@ -6,8 +6,8 @@ import com.timkwali.sabicash_exercise.common.Constants
 
 @Entity(tableName = Constants.NEWS_ARTICLES_REMOTE_KEYS_TABLE)
 data class NewsArticleRemoteKeys(
-    @PrimaryKey(autoGenerate = false)
-    val id: String,
+    @PrimaryKey(autoGenerate = true)
+    val id: Int = 0,
     val prevPage: Int?,
     val nextPage: Int?
 )

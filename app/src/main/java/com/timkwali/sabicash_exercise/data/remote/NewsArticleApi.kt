@@ -11,6 +11,7 @@ interface NewsArticleApi {
     suspend fun getNewsArticles(
         @Query("country") country: String = "us",
         @Query("page") pageNumber: Int = 1,
+        @Query("pageSize") perPage: Int,
         @Query("apiKey") apiKey: String = Constants.API_KEY
     ): NewsResponse
 }

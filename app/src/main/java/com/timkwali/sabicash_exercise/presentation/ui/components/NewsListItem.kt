@@ -12,35 +12,46 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.timkwali.sabicash_exercise.presentation.ui.theme.Dark100
+import coil.compose.rememberImagePainter
+import com.timkwali.sabicash_exercise.R
+import com.timkwali.sabicash_exercise.domain.model.NewsArticle
 import com.timkwali.sabicash_exercise.presentation.ui.theme.FadeWhite
 
 @Composable
 fun NewsListItem(
+    newsArticle: NewsArticle,
+    onClick: (url: String) -> Unit,
     modifier: Modifier = Modifier,
-    painter: Painter
 ) {
     Column {
         Card(
             modifier = modifier
-                .fillMaxWidth()
+                .fillMaxSize()
                 .clickable {
+                   onClick(newsArticle.url.orEmpty())
                 },
             shape = RoundedCornerShape(1.dp)
         ) {
             Box(
                 modifier = Modifier
-                    .height(150.dp)
+                    .height(200.dp)
             ) {
                 Image(
-                    painter = painter,
+                    painter = rememberImagePainter(
+                        data = newsArticle.urlToImage,
+                        builder = {
+                            crossfade(700)
+                            placeholder(R.drawable.ic_placeholder)
+                            error(R.drawable.ic_placeholder)
+                        }
+                    ),
                     contentDescription = null,
-                    contentScale = ContentScale.Crop
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize()
                 )
 
                 Box(
@@ -52,7 +63,7 @@ fun NewsListItem(
                                     Color.Transparent,
                                     Color.Black
                                 ),
-                                startY = 120f
+                                startY = -10f
                             )
                         )
                 )
@@ -65,12 +76,12 @@ fun NewsListItem(
                 ) {
                     Column {
                         Text(
-                            text = "News headline goes here",
+                            text = newsArticle.title.orEmpty(),
                             style = TextStyle(color = Color.White, fontSize = 14.sp)
                         )
                         Spacer(modifier = modifier.height(5.dp))
                         Text(
-                            text = "News Author",
+                            text = newsArticle.author.orEmpty(),
                             style = TextStyle(color = FadeWhite, fontSize = 12.sp)
                         )
                     }

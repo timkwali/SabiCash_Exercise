@@ -7,9 +7,9 @@ import com.timkwali.sabicash_exercise.common.Constants
 @Entity(tableName = Constants.NEWS_ARTICLES_TABLE)
 data class NewsArticle(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    val author: String,
-    val title: String,
-    val urlToImage: String,
-    val url: String
+    var id: Int,
+    val author: String?,
+    val title: String?,
+    val urlToImage: String?,
+    val url: String?
 )
