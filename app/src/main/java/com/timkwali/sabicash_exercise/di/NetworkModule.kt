@@ -3,6 +3,8 @@ package com.timkwali.sabicash_exercise.di
 import com.timkwali.sabicash_exercise.BuildConfig
 import com.timkwali.sabicash_exercise.common.Constants
 import com.timkwali.sabicash_exercise.data.api.NewsArticleApi
+import com.timkwali.sabicash_exercise.data.repository.NewsArticlesRepositoryImpl
+import com.timkwali.sabicash_exercise.domain.repository.NewsArticlesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +18,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface NetworkModule {
+object NetworkModule {
 
     @Provides
     @Singleton
@@ -30,9 +32,7 @@ interface NetworkModule {
 
     @Provides
     @Singleton
-    fun provideClient(
-        logger: HttpLoggingInterceptor
-    ): OkHttpClient {
+    fun provideClient(logger: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(30L, TimeUnit.SECONDS)
             .readTimeout(30L, TimeUnit.SECONDS)
@@ -43,9 +43,7 @@ interface NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(
-        client: OkHttpClient
-    ): Retrofit {
+    fun provideRetrofit(client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -57,5 +55,11 @@ interface NetworkModule {
     @Singleton
     fun provideNewsArticleApi(retrofit: Retrofit): NewsArticleApi {
         return retrofit.create(NewsArticleApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideNewsArticleRepository(newsArticleApi: NewsArticleApi): NewsArticlesRepository {
+        return NewsArticlesRepositoryImpl(newsArticleApi)
     }
 }
