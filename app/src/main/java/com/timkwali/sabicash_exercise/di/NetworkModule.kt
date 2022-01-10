@@ -2,7 +2,7 @@ package com.timkwali.sabicash_exercise.di
 
 import com.timkwali.sabicash_exercise.BuildConfig
 import com.timkwali.sabicash_exercise.common.Constants
-import com.timkwali.sabicash_exercise.data.api.NewsArticleApi
+import com.timkwali.sabicash_exercise.data.remote.NewsArticleApi
 import com.timkwali.sabicash_exercise.data.repository.NewsArticlesRepositoryImpl
 import com.timkwali.sabicash_exercise.domain.repository.NewsArticlesRepository
 import dagger.Module

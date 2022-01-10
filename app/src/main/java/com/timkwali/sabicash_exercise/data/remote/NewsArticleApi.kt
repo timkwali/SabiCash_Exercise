@@ -1,4 +1,4 @@
-package com.timkwali.sabicash_exercise.data.api
+package com.timkwali.sabicash_exercise.data.remote
 
 import com.timkwali.sabicash_exercise.common.Constants
 import com.timkwali.sabicash_exercise.domain.model.NewsResponse
