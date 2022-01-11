@@ -14,6 +14,7 @@
 * Jetpack Compose
 * Paging 3
 * Daggar Hilt
-* Coroutines
+* Kotlin Coroutines
+* Kotlin Flow
 * Room Database
 * MVVM with use-cases
