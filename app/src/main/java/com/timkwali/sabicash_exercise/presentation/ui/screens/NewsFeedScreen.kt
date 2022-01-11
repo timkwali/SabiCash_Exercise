@@ -58,8 +58,9 @@ fun NewsFeedScreen(viewModel: NewsArticleViewModel = hiltViewModel()) {
                     text = stringResource(id = R.string.top_news),
                     color = Color.White,
                     modifier = Modifier.padding(10.dp)
+
                 )
-                NewsArticleList(articlesList = viewModel.getNewsArticles())
+                NewsArticleList(articlesList = viewModel.data)
             }
         }
     )

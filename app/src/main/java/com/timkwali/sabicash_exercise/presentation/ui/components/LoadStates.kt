@@ -41,6 +41,7 @@ fun ErrorIndicator(
     onRetry: () -> Unit
 ) {
     Column(
+        modifier = Modifier.padding(all = 12.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {

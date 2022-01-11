@@ -1,6 +1,5 @@
 package com.timkwali.sabicash_exercise.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
@@ -8,8 +7,6 @@ import com.timkwali.sabicash_exercise.domain.model.NewsArticle
 import com.timkwali.sabicash_exercise.domain.usecase.GetNewsArticle
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,15 +16,15 @@ class NewsArticleViewModel @Inject constructor(
 ): ViewModel()  {
 
     init {
-//        getNewsArticles()
+        getNewsArticles()
     }
 
+    private lateinit var _data:Flow<PagingData<NewsArticle>>
+    val data get() = _data
 
-    fun getNewsArticles(): Flow<PagingData<NewsArticle>> {
-        var a: Flow<PagingData<NewsArticle>> = flow {  }
+    private fun getNewsArticles() {
         viewModelScope.launch {
-            a = getNewsArticle.invoke()
+            _data = getNewsArticle.invoke()
         }
-        return a
    }
 }
