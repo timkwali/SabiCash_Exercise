@@ -60,7 +60,7 @@ fun NewsFeedScreen(viewModel: NewsArticleViewModel = hiltViewModel()) {
                     modifier = Modifier.padding(10.dp)
 
                 )
-                NewsArticleList(articlesList = viewModel.data)
+                NewsArticleList(articlesList = viewModel.data.value)
             }
         }
     )
